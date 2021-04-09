@@ -7,9 +7,16 @@
 setInterval(() => {
 	document.querySelectorAll('div[aria-label="Action options"]')[0].click();
 		setTimeout(() => {
-			document.querySelectorAll('div[role="menuitem"]')[2].click();
+			let items = document.querySelectorAll('div[role="menuitem"]');
+			items[items.length == 3 ? 2 : 0].click();
 			setTimeout(() => {
-				document.querySelectorAll('div[aria-label="Move to Trash"]')[0].click();
+				let divs = document.querySelectorAll('div[aria-label="Delete"]');
+				if(divs.length > 0) {
+					divs[0].click();
+				} else {
+					divs = document.querySelectorAll('div[aria-label="Move to Trash"]');
+					divs[0].click();
+				}
 			}, 1000);
 		}, 1000);
 	}, 3000);
